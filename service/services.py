@@ -23,8 +23,11 @@ class Services:
     def list(self):
         return self.repository.find_all()
 
-    def get(self, task_id):
-        pass
+    def get(self, bolo_id):
+        resultado = self.repository.find_by_id(bolo_id)
+        if not resultado:
+            print("Não encontrado")
+        return resultado
 
     def update(self, task_id, title, description):
         pass
