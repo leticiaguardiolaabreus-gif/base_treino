@@ -1,15 +1,24 @@
 from repository.dao_entity import DAOEntity
+from entities.entity import Bolo
 
 class Services:
 
     def __init__(self, repository):
         self.repository = repository
 
-    def create(self, title, description):
-        # Validar dados (MUITO IMPORTANTE!!!!!)
-        # Criar entidade
-        # Solicitar persistência
-        pass
+    def create(self, nome, sabor):
+
+        if not nome or not nome.strip():
+            raise ValueError("Erro")
+        if not sabor or not sabor.strip():
+            raise ValueError("Erro")
+
+        bolo = Bolo()
+        bolo.nome = nome.strip()
+        bolo.sabor = sabor.strip()
+        bolo.feito = False
+        bolo.id = self.repository.create(bolo)
+        return bolo
 
     def list(self):
         pass
