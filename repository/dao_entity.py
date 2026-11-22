@@ -40,9 +40,25 @@ class DAOEntity:
         finally:
             connection.close()
 
-    def find_by_id(self, task_id):
-        # Consultar pelo ID
-        pass
+    def find_by_id(self, bolo_id):
+        connection = get_connection()
+        try:
+            cursor = connection.execute("SELECT * FROM bolo WHERE id =?" (bolo_id,))
+            registo = cursor.fetchone()
+                
+            bolo= Bolo()
+            bolo.id= registro[0]
+            bolo.nome = registro[1]
+            bolo.sabor = registro[2]
+            bolo.feito = bool(registro[3])
+            return bolo
+        finally:
+            connection.close()
+
+
+
+
+        
 
     def update(self, task):
         # Atualizar
