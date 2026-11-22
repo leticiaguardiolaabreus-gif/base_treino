@@ -42,7 +42,7 @@ class UI:
                except ValueError as error:
                    print(f"Erro: {error}")       
            elif escolha == "3":
-               resposta = input("Digite o ID:")
+               resposta = int(input("Digite o ID:"))
                try:
                    resultado = self.services.get(resposta)
                    if not resultado:
