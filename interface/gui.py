@@ -41,7 +41,17 @@ class UI:
                        print(f"nome : {bolo.nome}// sabor: {bolo.sabor}// feito: {bolo.feito}")
                except ValueError as error:
                    print(f"Erro: {error}")       
+           elif escolha == "3":
+               resposta = input("Digite o ID:")
+               try:
+                   resultado = self.services.get(resposta)
+                   if not resultado:
+                       print("Não encontrado")
+                   print(f"id: {resultado.id}// nome: {resultado.nome}// sabor: {resultado.sabor} // feito: {resultado.feito}")
+               except ValueError as erro:
+                   print(f"Erro: {erro}")
                    
+                      
                    
                      
         
