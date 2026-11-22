@@ -27,7 +27,22 @@ class UI:
                    print(f"Bolo cadastrado com sucesso! ID: {bolo.id}")
                except ValueError as error:
                    print(f"Erro: {erro}")
-
+           elif escolha == "2":
+               try:
+                   lista = self.services.find_all()
+                   if not lista:
+                       print("Sem registro")
+                   print("lista de registros:")
+                   for i in lista:
+                       if i.closed:
+                           feito = "Produzido"
+                       else:
+                           feito = "Não Produzido"
+                       print(f"nome : {bolo.nome}// sabor: {bolo.sabor}// feito: {bolo.feito}")
+               except ValueError as error:
+                   print(f"Erro: {error}")       
+                   
+                   
                      
         
         
