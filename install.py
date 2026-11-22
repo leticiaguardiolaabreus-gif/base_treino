@@ -5,9 +5,15 @@ def install():
 
     try:
         # Criar tabela no banco de dados
-        connection.execute("""""")
+        connection.execute("""CREATE TABLE IF NOT EXISTS bolos(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, sabor TEXT NOT NULL, 
+        feito BOOLEAN NOT NULL DEFAULT 0)""")
 
-        # Inserir dados iniciais (OBRIGATÓRIO!!!!)
+        cursor = connection.execute("""SELECT COUNT(*) FROM bolos""")
+        total = cursor.fetchone()[0]
+
+        if total == 0:
+            connection.execute("""INSERT INTO bolos (nome, sabor, feito) VALUES (?,?,?)"""
+             ("sonho de verão", "morango com baunilha", False),)
         
         connection.commit()
 
