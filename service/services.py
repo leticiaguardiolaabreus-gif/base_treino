@@ -48,5 +48,11 @@ class Services:
         return resultado
         
 
-    def delete(self, task_id):
-        pass
+    def delete(self, bolo_id):
+        if not bolo_id:
+            raise ValueError("Id não informado")
+        resultado = self.repository.find_by_id(bolo_id)
+        if not resultado:
+            print("Não encontrado")
+        self.repository.delete(bolo_id)
+        return resultado
