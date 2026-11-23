@@ -61,7 +61,21 @@ class UI:
                    print("Atualizado com sucesso")
                except ValueError as erro:
                    print(f"Erro: {erro}")
+          
+           elif escolha == "5" :
+               resposta = int(input("Digite o Id:"))
+               try:
+                   resultado = self.services.get(resposta)
+                   if not resultado:
+                       print("Não encontrado")
+                   self.services.delete(resposta)
+                   print(f"Deletado, id = {resultado}")
+               except ValueError as error:
+                   print(f"Erro: {erro}")
+           elif escolha == "6":
+               print("encerrando programa....")
                    
+                    
                       
                    
                      
