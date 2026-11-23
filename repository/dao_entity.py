@@ -8,7 +8,7 @@ class DAOEntity:
 
         try:
             cursor = connection.execute("""INSERT INTO bolo (nome, sabor, feito) 
-            VALUES (bolo.nome, bolo.sabor, bolo.feito)""")
+            VALUES (?, ?, ?)""", (bolo.nome, bolo.sabor, bolo.feito))
 
             connection.commit()
             return cursor.lastrowid
@@ -24,7 +24,7 @@ class DAOEntity:
         connection = get_connection()
         try:
             cursor = connection.execute("SELECT * FROM bolo")
-            lista = cursor.fetchall
+            lista = cursor.fetchall()
 
             registros = []
             for registro in lista:
@@ -43,8 +43,8 @@ class DAOEntity:
     def find_by_id(self, bolo_id):
         connection = get_connection()
         try:
-            cursor = connection.execute("SELECT * FROM bolo WHERE id =?" (bolo_id,))
-            registo = cursor.fetchone()
+            cursor = connection.execute("SELECT * FROM bolo WHERE id =?", (bolo_id,))
+            registro = cursor.fetchone()
                 
             bolo= Bolo()
             bolo.id= registro[0]
@@ -71,6 +71,6 @@ class DAOEntity:
 
         try:
             connection.execute("DELETE FROM bolo WHERE id =?", (bolo_id,))
-            connection.commit
+            connection.commit()
         finally:
             connection.close()

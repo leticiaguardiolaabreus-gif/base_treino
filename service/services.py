@@ -42,8 +42,8 @@ class Services:
         if not resultado:
             raise ValueError("Não encontrado")
 
-        bolo.nome = nome.strip()
-        bolo.sabor = sabor.strip()
+        resultado.nome = nome.strip()
+        resultado.sabor = sabor.strip()
         self.repository.update(resultado)
         return resultado
         

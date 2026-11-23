@@ -26,20 +26,20 @@ class UI:
                    bolo = self.services.create(nome, sabor)
                    print(f"Bolo cadastrado com sucesso! ID: {bolo.id}")
                except ValueError as error:
-                   print(f"Erro: {erro}")
+                   print(f"Erro: {error}")
            
            elif escolha == "2":
                try:
-                   lista = self.services.find_all()
+                   lista = self.services.list()
                    if not lista:
                        print("Sem registro")
                    print("lista de registros:")
                    for i in lista:
-                       if i.closed:
+                       if i.feito:
                            feito = "Produzido"
                        else:
                            feito = "Não Produzido"
-                       print(f"nome : {bolo.nome}// sabor: {bolo.sabor}// feito: {bolo.feito}")
+                       print(f"id: {i.id} //nome : {i.nome}// sabor: {i.sabor}// feito: {i.feito}")
                except ValueError as error:
                    print(f"Erro: {error}")       
            
@@ -50,17 +50,18 @@ class UI:
                    if not resultado:
                        print("Não encontrado")
                    print(f"id: {resultado.id}// nome: {resultado.nome}// sabor: {resultado.sabor} // feito: {resultado.feito}")
-               except ValueError as erro:
-                   print(f"Erro: {erro}")
+               except ValueError as error:
+                   print(f"Erro: {error}")
            
            elif escolha == "4":
+               bolo_id = int(input("Digite o ID: "))
                nome_novo = input("Digite o novo nome: ")    
                sabor_novo = input("Digite o novo sabor: ") 
                try:
                    self.services.update(bolo_id, nome_novo, sabor_novo)
                    print("Atualizado com sucesso")
-               except ValueError as erro:
-                   print(f"Erro: {erro}")
+               except ValueError as error:
+                   print(f"Erro: {error}")
           
            elif escolha == "5" :
                resposta = int(input("Digite o Id:"))
@@ -71,9 +72,10 @@ class UI:
                    self.services.delete(resposta)
                    print(f"Deletado, id = {resultado}")
                except ValueError as error:
-                   print(f"Erro: {erro}")
+                   print(f"Erro: {error}")
            elif escolha == "6":
                print("encerrando programa....")
+               break
                    
                     
                       
