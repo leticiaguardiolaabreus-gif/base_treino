@@ -29,8 +29,24 @@ class Services:
             print("Não encontrado")
         return resultado
 
-    def update(self, task_id, title, description):
-        pass
+    def update(self, bolo_id, nome, sabor):
+        if not bolo_id:
+            raise ValueError("Id não informado")
+        if not nome or not nome.strip():
+            raise ValueError("Nome não informado")      
+        if not sabor or not sabor.strip():
+            raise ValueError("Sabor não informado")      
+
+        resultado = self.repository.find_by_id(bolo_id)
+
+        if not resultado:
+            raise ValueError("Não encontrado")
+
+        bolo.nome = nome.strip()
+        bolo.sabor = sabor.strip()
+        self.repository.update(resultado)
+        return resultado
+        
 
     def delete(self, task_id):
         pass
