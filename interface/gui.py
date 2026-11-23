@@ -27,6 +27,7 @@ class UI:
                    print(f"Bolo cadastrado com sucesso! ID: {bolo.id}")
                except ValueError as error:
                    print(f"Erro: {erro}")
+           
            elif escolha == "2":
                try:
                    lista = self.services.find_all()
@@ -41,6 +42,7 @@ class UI:
                        print(f"nome : {bolo.nome}// sabor: {bolo.sabor}// feito: {bolo.feito}")
                except ValueError as error:
                    print(f"Erro: {error}")       
+           
            elif escolha == "3":
                resposta = int(input("Digite o ID:"))
                try:
@@ -48,6 +50,15 @@ class UI:
                    if not resultado:
                        print("Não encontrado")
                    print(f"id: {resultado.id}// nome: {resultado.nome}// sabor: {resultado.sabor} // feito: {resultado.feito}")
+               except ValueError as erro:
+                   print(f"Erro: {erro}")
+           
+           elif escolha == "4":
+               nome_novo = input("Digite o novo nome: ")    
+               sabor_novo = input("Digite o novo sabor: ") 
+               try:
+                   self.services.update(bolo_id, nome_novo, sabor_novo)
+                   print("Atualizado com sucesso")
                except ValueError as erro:
                    print(f"Erro: {erro}")
                    
