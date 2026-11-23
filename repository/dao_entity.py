@@ -66,6 +66,11 @@ class DAOEntity:
             connection.close()
 
 
-    def delete(self, task_id):
-        # Excluir
-        pass
+    def delete(self, bolo_id):
+        connection = get_connection()
+
+        try:
+            connection.execute("DELETE FROM bolo WHERE id =?", (bolo_id,))
+            connection.commit
+        finally:
+            connection.close()
