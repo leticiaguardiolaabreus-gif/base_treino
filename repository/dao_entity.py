@@ -60,9 +60,9 @@ class DAOEntity:
         connection = get_connection()
         try:
             connection.execute("""UPDATE bolo SET nome = ?, sabor = ?, feito = ? WHERE id= ?"""
-            , (bolo.nome, bolo.sabor, bolo.feito), bolo.id)
+            , (bolo.nome, bolo.sabor, bolo.feito, bolo.id))
             connection.commit()
-        except:
+        finally:
             connection.close()
 
 
