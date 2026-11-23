@@ -56,13 +56,15 @@ class DAOEntity:
             connection.close()
 
 
+    def update(self, bolo):
+        connection = get_connection()
+        try:
+            connection.execute("""UPDATE bolo SET nome = ?, sabor = ?, feito = ? WHERE id= ?"""
+            , (bolo.nome, bolo.sabor, bolo.feito), bolo.id)
+            connection.commit()
+        except:
+            connection.close()
 
-
-        
-
-    def update(self, task):
-        # Atualizar
-        pass
 
     def delete(self, task_id):
         # Excluir
